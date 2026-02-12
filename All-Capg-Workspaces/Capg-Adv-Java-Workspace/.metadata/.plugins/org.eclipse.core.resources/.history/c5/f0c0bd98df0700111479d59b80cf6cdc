@@ -1,0 +1,50 @@
+package com.capg.hibernate;
+
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.SessionFactory;
+import org.hibernate.Session;
+
+
+
+public class InsertStudent {
+	public static void main(String[] args) {
+		// Start Hibernate Framework
+		
+		Configuration cfg = new Configuration();
+		cfg.configure();	// loads hibernate.cfg.xml
+		
+		// build SessionFactory
+		SessionFactory factory = cfg.buildSessionFactory();
+		//Open Session
+		Session session = factory.openSession();
+		// Begin Transaction
+		Transaction tx = (Transaction) session.beginTransaction(); 
+		
+		try {
+			Student st = new Student();
+			st.setSno(9);
+			st.setSname("Ram");
+			st.setEmail("ram@gamil.com");
+			st.setMobile(777777777L);
+			
+			session.save(st);
+			
+			Student st2 = new Student();
+			st2.setSno()
+			
+			// commit transaction
+			
+			tx.commit();
+			System.out.println("Records inserted successfully");
+			
+		}catch(Exception e) {
+			tx.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+			factory.close();
+		}
+	}
+
+}
