@@ -38,6 +38,6 @@
 
 
   
-  <mapping resource="Employee.hbm.xml"/>
+  <mapping resource="com.capg.shadow.Bean.BankBean"/>
   </session-factory>
 </hibernate-configuration>
